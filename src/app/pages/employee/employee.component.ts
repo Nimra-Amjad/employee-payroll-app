@@ -52,7 +52,36 @@ export class EmployeeComponent implements OnInit {
       } else {
         alert(res.message)
       }
+    })
+  }
 
+  onEdit(id: number) {
+    this.empSrv.getEmpById(id).subscribe((res: any) => {
+      this.employeeObj = res.data;
+    })
+  }
+
+  onUpdate() {
+    this.empSrv.updateEmployee(this.employeeObj).subscribe((res: any) => {
+      if (res.result) {
+        this.loadAllEmployee();
+        alert(res.message);
+        this.resetObj();
+      } else {
+        alert(res.message)
+      }
+    })
+  }
+
+  onDelete(empId: number) {
+    this.empSrv.deleteEmpById(empId).subscribe((res: any) => {
+      if (res.result) {
+        this.loadAllEmployee();
+        alert(res.message);
+        this.resetObj();
+      } else {
+        alert(res.message)
+      }
     })
   }
 }

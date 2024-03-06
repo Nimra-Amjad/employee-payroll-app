@@ -17,4 +17,16 @@ export class EmployeeService {
     return this.http.post("http://onlinetestapi.gerasim.in/api/TeamSync/CreateEmployee", obj)
   }
 
+  updateEmployee(obj: any): Observable<any> {
+    return this.http.post("http://onlinetestapi.gerasim.in/api/TeamSync/UpdateEmployee", obj)
+  }
+
+  getEmpById(id: number) {
+    return this.http.get("http://onlinetestapi.gerasim.in/api/TeamSync/GetEmployeeByEmpId?empid=" + id)
+  }
+
+  deleteEmpById(id: number) {
+    return this.http.get("http://onlinetestapi.gerasim.in/api/TeamSync/DeleteEmployeeByEmpId?empid=" + id)
+  }
+
 }
